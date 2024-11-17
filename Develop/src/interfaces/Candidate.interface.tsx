@@ -8,3 +8,5 @@ interface Candidate {
     html_url: string;
     company: string;
 }
+
+export default Candidate;
