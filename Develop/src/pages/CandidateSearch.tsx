@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { searchGithub, searchGithubUser } from "../api/API";
 import Candidate from "../interfaces/Candidate.interface";
+import CandidateCard from "../components/candidateCard";
 
 const CandidateSearch = () => {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
@@ -22,7 +23,7 @@ const CandidateSearch = () => {
     };
   };
 
-  const fetchCandidates = async () => {
+  const fetchCandidates = useCallback(async () => {
     try {
       setError(null);
       setLoading(true);
@@ -36,11 +37,11 @@ const CandidateSearch = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchCandidates();
-  }, []);
+  }, [fetchCandidates] );
 
   const handleSave = () => {
     if (candidates.length > 0) {
@@ -71,18 +72,8 @@ const CandidateSearch = () => {
     <div>
       <h2>Candidate Review</h2>
       <div>
-        <img src={currentCandidate.avatar} alt={`${currentCandidate.name}'s avatar`} />
-        <h3>{currentCandidate.name}</h3>
-        <p>Username: {currentCandidate.username}</p>
-        <p>Location: {currentCandidate.location}</p>
-        <p>Email: {currentCandidate.email}</p>
-        <p>Company: {currentCandidate.company}</p>
-        <a href={currentCandidate.html_url} target="_blank" rel="noopener noreferrer">
-          Profile Link
-        </a>
+        <CandidateCard candidate={currentCandidate} onSave={handleSave} onSkip={handleSkip} />
       </div>
-      <button onClick={handleSave}>+</button>
-      <button onClick={handleSkip}>-</button>
     </div>
   );
 };
