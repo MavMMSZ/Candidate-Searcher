@@ -21,9 +21,11 @@ const SavedCandidates = () => {
       <h2>Saved Candidates</h2>
       <ul>
         {savedCandidates.map((candidate) => (
-          <li key={candidate.id}>
-            <List candidate={candidate} />
-          </li>
+          <List candidate={candidate} onRemove={(candidate) => {
+            const updatedCandidates = savedCandidates.filter((c) => c.id !== candidate.id);
+            setSavedCandidates(updatedCandidates);
+            localStorage.setItem("potentialCandidates", JSON.stringify(updatedCandidates));
+          }} />
         ))}
       </ul>
     </div>

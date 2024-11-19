@@ -1,21 +1,28 @@
 import Candidate from "../interfaces/Candidate.interface";
+import { Card, Button } from "react-bootstrap";
 
 interface CandidateCardProps {
   candidate: Candidate;
+  onRemove: (candidate: Candidate) => void;
 }
 
-const List = ({ candidate }: CandidateCardProps) => {
-  return (
-    <div>
-      <h1>{candidate.name}</h1>
-      <h2>{candidate.username}</h2>
-      <h3>{candidate.location}</h3>
-      <h4>{candidate.email}</h4>
-      <h5>{candidate.company}</h5>
-      <h6>{candidate.bio}</h6>
-    </div>
-  );
-};
-
-export default List;
-
+const List = ({ candidate, onRemove }: CandidateCardProps) => {
+    return (
+        <div>
+            <Card style={{display:"flex", justifyContent:"center",flexDirection:"row", flexWrap:"wrap"}}>
+                <Card.Body>
+                    <Card.Img src={candidate.avatar} />
+                    <Card.Text>{candidate.name}({candidate.username})</Card.Text>
+                    <Card.Text>{candidate.location}</Card.Text>
+                    <Card.Text>{candidate.email}</Card.Text>
+                    <Card.Text>{candidate.company}</Card.Text>
+                    <Card.Text>{candidate.bio}</Card.Text>
+                    <Button style={{color: "black",backgroundColor: "red", borderRadius: "50%",
+                    fontWeight: "bold", fontSize: "20px"                
+                    }} variant="danger" onClick={() => onRemove(candidate)}>-</Button>
+                </Card.Body>
+            </Card>
+        </div>
+    )
+}
+export default List
