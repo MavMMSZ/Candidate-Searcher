@@ -6,12 +6,7 @@ export default defineConfig({
   envDir: './environment',
   plugins: [react()],
   server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3001',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-    },
+    port: 3000,
+    open: true,
   },
 });
