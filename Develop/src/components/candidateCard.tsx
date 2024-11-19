@@ -9,13 +9,10 @@ interface CandidateCardProps {
 
 const CandidateCard = ({ candidate, onSave, onSkip }: CandidateCardProps) => {
   return (
-    <Card>
-      <Card.Img variant="top" src={candidate.avatar} />
+    <Card style= {{ backgroundColor: "black", width: "100%", borderRadius: "40px"}}>
+      <Card.Img variant="top" src={candidate.avatar} style= {{borderRadius: "40px 40px 0px 0px"}}/>
       <Card.Body>
-        <Card.Title>{candidate.name}</Card.Title>
-        <Card.Text>
-          <strong>Username:</strong> {candidate.username}
-        </Card.Text>
+        <Card.Title>{candidate.name}({candidate.username})</Card.Title>
         <Card.Text>
           <strong>Location:</strong> {candidate.location}
         </Card.Text>
@@ -24,6 +21,9 @@ const CandidateCard = ({ candidate, onSave, onSkip }: CandidateCardProps) => {
         </Card.Text>
         <Card.Text>
           <strong>Company:</strong> {candidate.company}
+        </Card.Text>
+        <Card.Text>
+          <strong>Bio:</strong> {candidate.bio}
         </Card.Text>
         <Button variant="success" onClick={() => onSave(candidate)}>
           Save

@@ -20,6 +20,7 @@ const CandidateSearch = () => {
       email: detailedUser.email || "Not Available",
       html_url: user.html_url,
       company: detailedUser.company || "Unknown",
+      bio: detailedUser.bio || "No bio provided",
     };
   };
 
@@ -70,7 +71,7 @@ const CandidateSearch = () => {
 
   return (
     <div>
-      <h2>Candidate Review</h2>
+      <h2 style={{fontSize:"60px", display: "flex", justifyContent: "center", margin: "0px"}}>Candidate Search</h2>
       <div>
         <CandidateCard candidate={currentCandidate} onSave={handleSave} onSkip={handleSkip} />
       </div>
