@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Candidate from "../interfaces/Candidate.interface";
+import List from "../components/list";
 
 const SavedCandidates = () => {
   const [savedCandidates, setSavedCandidates] = useState<Candidate[]>([]);
@@ -21,15 +22,7 @@ const SavedCandidates = () => {
       <ul>
         {savedCandidates.map((candidate) => (
           <li key={candidate.id}>
-            <img src={candidate.avatar} alt={`${candidate.name}'s avatar`} width={50} />
-            <h3>{candidate.name}</h3>
-            <p>Username: {candidate.username}</p>
-            <p>Location: {candidate.location}</p>
-            <p>Email: {candidate.email}</p>
-            <p>Company: {candidate.company}</p>
-            <a href={candidate.html_url} target="_blank" rel="noopener noreferrer">
-              Profile Link
-            </a>
+            <List candidate={candidate} />
           </li>
         ))}
       </ul>
