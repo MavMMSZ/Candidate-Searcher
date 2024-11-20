@@ -48,6 +48,9 @@ const List = ({ candidates, onRemove }: CandidateTableProps) => {
                     height: "30px",
                     fontSize: "16px",
                     cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center"
                   }}
                   onClick={() => onRemove(candidate)}
                 >

@@ -39,6 +39,7 @@ const CandidateCard = ({ candidate, onSave, onSkip }: CandidateCardProps) => {
           <Card.Text style={{ color: "lightgray", fontSize: "1rem" }}>
             <strong>Bio:</strong> {candidate.bio}
           </Card.Text>
+          <div style={{display: "flex", justifyContent:"center", gap: "20px", marginTop: "20px"}}>
           <Button
             style={{
               backgroundColor: "red",
@@ -47,7 +48,9 @@ const CandidateCard = ({ candidate, onSave, onSkip }: CandidateCardProps) => {
               width: "40px",
               margin: "10px",
               fontWeight: "bold",
-              alignItems: "center"
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "center"
             }}
             variant="danger"
             onClick={onSkip}
@@ -62,13 +65,16 @@ const CandidateCard = ({ candidate, onSave, onSkip }: CandidateCardProps) => {
               width: "40px",
               margin: "10px",
               fontWeight: "bold",
-              alignItems: "center"
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "center"
             }}
             variant="success"
             onClick={() => onSave(candidate)}
           >
             +
           </Button>
+          </div>
         </Card.Body>
       </Card>
     </div>
