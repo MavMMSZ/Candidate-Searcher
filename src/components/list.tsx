@@ -14,7 +14,7 @@ const List = ({ candidates, onRemove }: CandidateTableProps) => {
             <th style={{ padding: "10px", border: "1px solid #333" }}>Image</th>
             <th style={{ padding: "10px", border: "1px solid #333" }}>Name</th>
             <th style={{ padding: "10px", border: "1px solid #333" }}>Location</th>
-            <th style={{ padding: "10px", border: "1px solid #333" }}>Email</th>
+            <th style={{ padding: "10px", border: "1px solid #333" }}>Link</th>
             <th style={{ padding: "10px", border: "1px solid #333" }}>Company</th>
             <th style={{ padding: "10px", border: "1px solid #333" }}>Bio</th>
             <th style={{ padding: "10px", border: "1px solid #333" }}>Reject</th>
@@ -34,7 +34,7 @@ const List = ({ candidates, onRemove }: CandidateTableProps) => {
                 {candidate.name} ({candidate.username})
               </td>
               <td style={{ padding: "10px", border: "1px solid #333" }}>{candidate.location}</td>
-              <td style={{ padding: "10px", border: "1px solid #333" }}>{candidate.email}</td>
+              <td style={{ padding: "10px", border: "1px solid #333" }}><a href={candidate.html_url} target="_blank" rel="noopener noreferrer">{candidate.html_url}</a></td>
               <td style={{ padding: "10px", border: "1px solid #333" }}>{candidate.company}</td>
               <td style={{ padding: "10px", border: "1px solid #333" }}>{candidate.bio}</td>
               <td style={{ padding: "10px", border: "1px solid #333" }}>
